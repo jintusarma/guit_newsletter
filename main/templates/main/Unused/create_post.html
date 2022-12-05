@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% block title %}Create Post{% endblock  %}
+
+{% block content %}
+<main class="bg-gradient-to-r from-cyan-500 to-blue-500 max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+    <header class="text-gray-900 text-center text-2xl">
+        <h1>Create New Post</h1>
+    </header>
+    <form method="post" enctype="multipart/form-data" class="text-gray-50 ml-8">
+            {% csrf_token %}
+            <div class="m-4 ">
+                <label for="">Title</label>
+                <div class="text-gray-900">{{form.title}}</div>
+            </div>
+
+            <div class="m-4 text-gray-50">
+                <label for="" >Content</label>
+                <div class="text-gray-900">{{form.content}}</div>
+            </div>
+
+            <div class="m-4">
+                <label for="">Image</label>
+                <div class="text-gray-50">{{form.image}}</div>
+            </div>
+
+            <div class="m-4">
+                <label for="">Select Category</label>
+                <div class="text-gray-900">{{form.cat}}</div>
+            </div>
+
+        
+            <button type="submit" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Submit</button>
+        </form>
+    </main>
+{% endblock %}

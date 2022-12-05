@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %}detail Page{% endblock  %}
+
+{% block content %}
+{% if post.status == True %}
+<div class="ml-6 mr-6 text-stone-50 font-serif mt-2 text-justify ">
+
+<h1 class="text-2xl text-center">{{ post.title }}</h1>
+<p class="text-center font-thin text-xs">(By : {{post.author}} | {{post.cat}})</p>
+
+<img class="box-content h-60 w-100 p-5 m-auto" src="{{post.image.url}}" alt="">
+<p class="">{{post.content | safe}}</p>
+</div>
+{% else %}
+<p class="text-stone-50 text-center font-serif mt-2 text-xl">This Page is Empty </p>
+{% endif %}
+{% endblock %}

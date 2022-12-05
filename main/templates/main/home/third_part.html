@@ -1,0 +1,36 @@
+{% load static %}
+<section class="text-white body-font ">
+    <div class="container px-5 py-20 mx-auto">
+      <div class="flex flex-wrap mx-4 -mb-10  text-center">
+        <div class="sm:w-3/5 mb-10 border-2 rounded-2xl" style="width: 59%;">
+          <p class="py-2 rounded-t-2xl font-medium bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 tracking-widest">Gauhati University Campus</p>
+          <video class="rounded-b-2xl" controls muted loop autoplay>
+            <source src="{%static 'clip/clip.mp4' %}" type="video/mp4"> 
+          </video>
+        </div>
+        
+        <!-- <div class="">
+          <script src="{%static 'js/script.js' %}"></script>
+        </div> -->
+
+        <div style="width: 1%;">
+
+        </div>
+        
+        <div class="sm:w-2/5 rounded-2xl mb-10 border-white border-2 bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-gray-900 to-gray-600 bg-gradient-to-r">
+          <p class="py-2 rounded-t-2xl font-medium bg-gradient-to-r from-gray-900 via-blue-800 to-blue-700 tracking-widest">Trending Topics</p>
+            <marquee class="rounded-b-2xl" behavior="" direction="up" scrolldelay=200>
+              {% for post in object_list%}
+              {% if post.status == True %}
+              <div class="mt-5 ml-16 rounded-2xl">
+                 <a href="{% url 'article-detail' post.pk %}"><img class="rounded-lg w-16 float-left mx-8" src="{{post.image.url}}" alt=""><p class="mx-8">  {{post.title | safe | truncatechars:20}} </p>  </a></p>
+                 <br>
+              </div>
+                {% endif %}
+              {% endfor %}
+            </marquee>
+
+        </div>
+      </div>
+    </div>
+  </section>

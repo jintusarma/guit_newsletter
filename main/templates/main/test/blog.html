@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}detail Page{% endblock  %}
+
+{% block content %}
+{% if post.status == True or user.is_superuser %}
+
+    <section class="text-gray-50 body-font">
+      <link rel="stylesheet" href="{% static 'js/script.js' %}">
+      <h1 class="text-center text-4xl mt-8">{{post.title}}</h1>
+        <div class="container px-5 py-16 mx-auto flex flex-col">
+          <div class="lg:w-4/6 mx-auto">
+            <div class="rounded-lg h-64 overflow-hidden">
+              <a href="{{post.image.url}}" target=”_blank”><img alt="content" class="object-cover object-center h-full w-full" src="{{post.image.url}}"></a>
+            </div>
+            <div class="flex flex-col sm:flex-row mt-8">
+              <div class="sm:w-1/4 text-center sm:pr-8 sm:py-8">
+                <div class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="flex flex-col items-center text-center justify-center">
+                  <h2 class="font-medium title-font mt-4 text-gray-50 text-lg">{{post.author}}</h2>
+                  <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                  <p class="text-base">{{post.cat}}</p>
+                  <p class="text-base">Posted On: {{post.add_date| date:'D, d M, Y'}}</p>
+                </div>
+              </div>
+              <div class="sm:w-3/4 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-justify">
+                <p class="leading-relaxed text-lg mb-4">{{post.content | safe}} </p>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% else %}
+<p class="text-stone-50 text-center font-serif mt-2 text-xl">This Page is Empty </p
+      {% endif %}
+      
+      {% endblock %}
+      

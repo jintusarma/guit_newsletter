@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% block title %}Add Category{% endblock %}
+{% block content %}
+<div class="text-white">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div> Category Name : {{form.title}}</div>
+        <div><p> Category Description : </p>{{form.description}}</div>
+        <div>Category Url : {{form.url}}</div>
+        <div class=""><p>Image for the Category : </p>{{form.image}}</div>
+        <button type="submit"
+            class="flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-20 py-2.5 text-center m-auto my-3 mb-5">Submit</button>
+    </form>
+</div>
+{% endblock %}

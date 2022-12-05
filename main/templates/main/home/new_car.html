@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
+<link rel="stylesheet" href="{%static 'carousal/style.css' %}">
+</head>
+<!-- partial:index.partial.html -->
+<!-- <div class="contain"> -->
+  <div>
+    <!-- <div class="mb-5 text-center">
+      <span class="text-2xl text-gray-50 p-2 text-center border"> Categories </span>
+    </div> -->
+  <div id="owl-carousel" class="owl-carousel owl-theme">
+    {% for cat in cat_list %}
+    <a href="/category/{{cat.url}}">
+      <!-- <div class="object-cover"> -->
+        <figure class="relative transition-all duration-300 cursor-pointer">
+          <img class="h-80 mt-0 object-cover object-center md:h-96 xl:w-full" src="{{cat.image.url}}" alt="https://dummyimage.com/721x401">
+          <figcaption class="absolute my-auto bottom-6 px-4 py-5 text-lg text-white bg-black w-full text-4xl text-center uppercase tracking-widest opacity-75">
+            <p class="opacity-100">{{cat.title}}</p>
+          </figcaption>
+        </figure>
+      <!-- </div> -->
+      <!-- <center>
+        <span class="text-gray-50 text-center text-2xl">{{cat.title}}</span>
+    </center> -->
+    <!-- <div class="mt-3 mb-3 text-center">
+      <span class="text-2xl text-gray-50 p-2 text-center border"> {{cat.title}} </span>
+    </div> -->
+  </a>
+    
+    {% endfor %}
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js'></script>
+  <script  src="{%static 'carousal/script.js' %}"></script>
+</div>
+<!-- partial -->
+

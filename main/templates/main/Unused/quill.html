@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% block title %}Add Post{% endblock %}
+{% block content %}
+<div class="text-gray-50 ">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Include stylesheet -->
+    <form action="" method="post">
+        {% csrf_token %}
+        <!-- Create the editor container -->
+        <div class="m-4 ">
+            <label for="">Title</label>
+            <div class="text-gray-500 bg-red-500">
+                <input name="title" type="text" class="w-3/4">
+                <!-- {{form.title}} -->
+            </div>
+        </div>
+
+        <div name="content" class="text-gray-900 bg-gray-50" id="editor">
+            {% comment %} {{form.content}} {% endcomment %}
+        </div>
+
+
+        <div class="m-4">
+            <label for="">Post Image</label>
+            <div class="text-gray-50">{{form.image}}</div>
+        </div>
+
+        <div class="m-4 text-gray-50">
+            <label for="">Select Category</label>
+            <div class="text-gray-900">{{form.cat}}</div>
+        </div>
+
+        <button type="submit"
+            class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Submit</button>
+
+    </form>
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+        var toolbar = quill.getModule('toolbar');
+        toolbar.addHandler('image', showImageUI);
+
+    </script>
+</div>
+{% endblock %}
