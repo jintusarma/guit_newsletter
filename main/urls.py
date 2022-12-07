@@ -20,5 +20,6 @@ urlpatterns = [
     path('category/<slug:url>', category),
     
     #pdf
-    path('test',views.render_pdf_view,name='test'),
+    path('pdf/render_pdf_view',views.render_pdf_view,name='test'),
+    path('pdf/',views.date_take,name='pdf'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

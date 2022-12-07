@@ -172,7 +172,11 @@ def category(requests, url):
 
 # To create PDF
 def render_pdf_view(request):
-    posts = Post.objects.all()
+    # posts = Post.objects.all()
+    date1=request.POST['date1']
+    date2=request.POST['date2']
+    posts = Post.objects.filter(add_date__range=[date1,date2])
+    # Sample.objects.filter(date__range=["2020-01-01", "2020-01-31"])
     # post_name = posts.name
     template_path = 'customers/pdf1.html'
     context = {'posts': posts}
@@ -196,3 +200,6 @@ def render_pdf_view(request):
     if pisa_status.err:
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+def date_take(requests):
+    return render(requests,'main/home/date_take.html')

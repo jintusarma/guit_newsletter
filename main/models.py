@@ -35,6 +35,7 @@ class Post(models.Model):
     cat = models.ForeignKey(Catergory,on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
     add_date = models.DateTimeField(auto_now_add=True)
+    add_date.editable = True
     
     def image_tag(self):
         return format_html('<img src = "/media/{}"  style="width:30px;height:30px;border-radius:50%;" />'.format(self.image))
@@ -44,5 +45,3 @@ class Post(models.Model):
     
     class Meta:
         ordering = ('-add_date',)
-
-    
