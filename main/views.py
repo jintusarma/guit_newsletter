@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import PostForm,CategoryForm,SignUpForm
+from .forms import PostForm,CategoryForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
 from django.views.generic import ListView,DetailView,CreateView,DeleteView
@@ -62,19 +62,20 @@ def load_more(request):
         
 #     return render(requests,'registration/signupform.html',{"form":form}) 
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
-    else:
-        form = SignUpForm()
-    return render(request, 'registration/signupform.html', {'form': form})
+
+# def signup(request):
+#     if request.method == 'POST':
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password1')
+#             user = authenticate(username=username, password=raw_password)
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = SignUpForm()
+#     return render(request, 'registration/signupform.html', {'form': form})
 
 @login_required(login_url='/login')
 def create_post(requests):
