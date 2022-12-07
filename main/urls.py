@@ -11,12 +11,14 @@ urlpatterns = [
     path('home/', views.home, name = "home"),
     path('load-more',views.load_more,name='load-more'),
     path('article/<int:pk>/', ArticleDetailView.as_view(), name="article-detail"),
-    # path('sign-up/',views.signup,name="sign-up"),
     path('create-post/',views.create_post,name="create-post"),
     path('my_posts/',EditnDeletePost.as_view(),name="my-posts"),
     path('delete_post/',DeletePost.as_view(),name="delete-post"),
     path('admin_approval/',views.approve_post, name='admin_approval'),
     path('add-category/', AddCategory.as_view(), name="add-category"),   #class based view 
     path('view-category/', ViewCategory.as_view(), name="view-category"),   #class based view 
-    path('category/<slug:url>', category)
+    path('category/<slug:url>', category),
+    
+    #pdf
+    path('test',views.render_pdf_view,name='test'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

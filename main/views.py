@@ -9,6 +9,14 @@ from .models import Post,Catergory
 from django.core import serializers
 from django.http import JsonResponse
 
+#  for pdf
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
+
+
+
 # Create your views here.
 def home(requests):
     posts = Post.objects.all()
@@ -160,3 +168,31 @@ def category(requests, url):
         'object_list':posts,
     }
     return render(requests, 'main/test/category.html',data)
+
+
+# To create PDF
+def render_pdf_view(request):
+    posts = Post.objects.all()
+    # post_name = posts.name
+    template_path = 'customers/pdf1.html'
+    context = {'posts': posts}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    # To download
+    # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    # #Only vIew
+    
+    
+    
+    response['Content-Disposition'] = 'filename="report.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response, )
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
