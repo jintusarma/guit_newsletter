@@ -171,7 +171,7 @@ def category(requests, url):
 
 
 # To create PDF
-def render_pdf_view(request):
+def pdf_newsletter(request):
     # posts = Post.objects.all()
     date1=request.POST['date1']
     date2=request.POST['date2']

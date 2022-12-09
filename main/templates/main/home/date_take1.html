@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<form action="pdf_newsletter" method="post" >
+    {% csrf_token %}
+    <input type="date" name="date1" id="">
+    <input type="date" name="date2" id="">
+    <!-- <a href="/test"> -->
+    <button type="submit" class="text-white">Submit</button>
+</form>
+{% endblock %}
