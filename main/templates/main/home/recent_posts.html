@@ -6,12 +6,12 @@
   
         {% if post.status == True %}
         <div class=" p-4 md:w-1/3">
-          <div class="bg-white h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+          <div class="text-gray-200 h-full border-2 border-blue-400 border-opacity-60 rounded-lg overflow-hidden" style="background-color: #343030;">
             <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{post.image.url}}"
               alt="https://dummyimage.com/721x401">
             <div class="p-6">
               <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{{post.cat}} </br> {{post.add_date| date:'D, d M, Y'}}</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{post.title}}</h1>
+              <h1 class="title-font text-lg font-medium text-gray-50 mb-3">{{post.title}}</h1>
               <p class="leading-relaxed mb-3">{{post.content | truncatechars:98 | safe}}</p>
               <div class="flex items-center flex-wrap">
                 <a href="{% url 'article-detail' post.pk %}"

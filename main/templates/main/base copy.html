@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}My Site{% endblock  %}</title>
+    {% block links %}{% endblock  %}
+</head>
+{% comment %} <body class="bg-gradient-to-br from-gray-900 to-gray-600 bg-gradient-to-r"> {% endcomment %}
+<body class="bg-gradient-to-l from-indigo-200 via-red-200 to-yellow-100">
+    {% include 'main/header.html' %}
+ 
+    
+        {% block content %}{% endblock content %}
+    
+    
+    <span>
+        <hr>
+        {% include 'main/Base/footer.html' %}
+    </span>
+</body>
+</html>

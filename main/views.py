@@ -175,7 +175,7 @@ def pdf_newsletter(request):
     # posts = Post.objects.all()
     date1=request.POST['date1']
     date2=request.POST['date2']
-    posts = Post.objects.filter(add_date__range=[date1,date2])
+    posts = Post.objects.filter(add_date__range=[date1,date2],status=True)
     # Sample.objects.filter(date__range=["2020-01-01", "2020-01-31"])
     # post_name = posts.name
     template_path = 'customers/pdf1.html'
